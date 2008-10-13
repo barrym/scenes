@@ -12,7 +12,9 @@ describe Cast do
 
   it "should be able to update itself"
 
-  it "should fetch itself from the database if it has already been called"
+  it "should fetch itself from the database if it is an ActiveRecord object and it has already been called"
+
+  it "should return itself if not an ActiveRecord object"
 
   it "should ignore case when referencing a cast member"
 
