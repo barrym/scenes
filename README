@@ -11,3 +11,9 @@ Example goes here.
 
 
 Copyright (c) 2008 [name of plugin creator], released under the MIT license
+
+
+TODO:
+
+Namespace Scene and Cast
+Dynamically generate a "Given the scene ...." method
