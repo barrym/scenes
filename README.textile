@@ -1,0 +1,18 @@
+h1. Scenes
+
+Introduction goes here.
+
+
+h2. Example
+
+Example goes here.
+
+
+h2. TODO:
+
+Namespace Scene and Cast
+Dynamically generate a "Given the scene ...." method
+
+
+
+Copyright (c) 2008 [name of plugin creator], released under the MIT license
