@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Cast do
+describe Scenes::Character do
 
   it "should add new cast members"
 

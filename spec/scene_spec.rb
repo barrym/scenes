@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Scene do 
+describe Scenes::Scene do 
 
   it "should add new scenes"
   

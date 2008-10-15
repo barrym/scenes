@@ -10,7 +10,6 @@ Example goes here.
 
 h2. TODO:
 
-Namespace Scene and Cast
 Dynamically generate a "Given the scene ...." method
 
 
