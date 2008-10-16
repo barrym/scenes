@@ -1,16 +1,16 @@
-h1. Scenes
+h2. Scenes
 
 Introduction goes here.
 
 
-h2. Example
+h3. Example
 
 Example goes here.
 
 
-h2. TODO:
+h3. TODO:
 
-Dynamically generate a "Given the scene ...." method
+Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
 
 
 
