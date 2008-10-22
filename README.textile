@@ -11,6 +11,13 @@ Example goes here.
 h3. TODO:
 
 Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
+Add rake scenes
+  Searches for all *_scene.rb in config/scenes ?
+
+Character['foo'].duplicate_as("bar").with do |bar|
+  bar.name = "Bob"
+end
+
 
 
 
