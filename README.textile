@@ -21,4 +21,4 @@ end
 
 
 
-Copyright (c) 2008 [name of plugin creator], released under the MIT license
+Copyright (c) 2008 Barry Mitchelson, released under the MIT license
