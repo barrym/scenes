@@ -10,16 +10,14 @@ Example goes here.
 
 h3. TODO:
 
-*Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
+# Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
 
-* Add rake scenes
-  Searches for all *_scene.rb in config/scenes ?
+# Add rake scenes
+    Searches for all *_scene.rb in config/scenes ?
 
-* Character['foo'].duplicate_as("bar").with do |bar|
-  bar.name = "Bob"
-end
-
-* Add Scenes::load_all which requires all files from the scenes directory, pass a pattern for Dir.glob, defaults to scenes/*.rb ?
+# Character['foo'].duplicate_as("bar").with do |bar|
+    bar.name = "Bob"
+  end
 
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
