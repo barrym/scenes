@@ -1,26 +1,49 @@
-h2. Scenes
+h1. Scenes
 
-Introduction goes here.
+Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state.
+
+h2. Usage
+
+h3. Characters
+
+<pre>
+<code>
+  Scenes::Character.named("Alice) {
+    User.create(:name => 'Alice')
+  }
+</code>
+</pre>
+
+h3. Scenes
+
+<pre>
+<code>
+  Scenes::Scene.named("Alice and Bob") {
+    Scenes::Character['Alice']
+    Scenes::Character['Bob']
+  }
+</code>
+</pre>
+
+h2. Rake task
 
 
-h3. Example
+h2. TODO:
 
-Example goes here.
+* Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
 
+* Add duplicate method
 
-h3. TODO:
+  <pre>
+  <code>
+    Character['foo'].duplicate_as("bar").with do |bar|
+      bar.name = "Bob"
+    end
+  </code>
+  </pre>
 
-# Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
+* Possibly add ability to pass options to character 
 
-# Add rake scenes
-    Searches for all *_scene.rb in config/scenes ?
-
-# Character['foo'].duplicate_as("bar").with do |bar|
-    bar.name = "Bob"
-  end
-
-# Possibly add ability to pass options to character 
-
-# Make init.rb create the scenes/ directory
+* Make init.rb create the scenes/ directory ?
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
