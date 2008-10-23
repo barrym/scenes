@@ -19,5 +19,8 @@ h3. TODO:
     bar.name = "Bob"
   end
 
+# Possibly add ability to pass options to character 
+
+# Make init.rb create the scenes/ directory
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
