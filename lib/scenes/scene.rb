@@ -41,7 +41,7 @@ module Scenes
     end
 
     def self.actual_name(name)
-      self.list.detect {|scene| scene =~ /#{name}/i}
+      self.list.detect {|scene| scene =~ /^#{name}$/i}
     end
 
   end
