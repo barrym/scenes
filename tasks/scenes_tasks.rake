@@ -61,39 +61,34 @@ namespace :scenes do
       scene_data[tbl] = YAML.dump klass.find(:all).collect(&:attributes)
     end
 
-    puts "Enter a name for this scene:"
+    puts "\n\nEnter a name for this scene:"
     name = Readline::readline('> ').strip
 
     FileUtils.mkdir_p(RAILS_ROOT + "/scenes/saved")
-    file_name = normalise_scene_file_name(name)
+    file_name = name.gsub(/\W/, '_').downcase
 
-    yaml_file_location = "/scenes/saved/#{file_name}.yml"
-    scene_file_location = "/scenes/saved/#{file_name}.rb"
+    yaml_file = "/scenes/saved/#{file_name}.yml"
 
-    yaml_file = File.new(RAILS_ROOT + yaml_file_location, "w")
-    yaml_file.write YAML.dump(scene_data)
-    yaml_file.close
+    File.open(RAILS_ROOT + yaml_file, "w") do |f|
+      f.write YAML.dump(scene_data)
+    end
 
-    scene_file = File.new(RAILS_ROOT + scene_file_location, "w")
-    scene_file.write <<DATA
-    Scenes::Scene.named("#{name}") {
-      YAML.load_file(RAILS_ROOT + "#{yaml_file_location}").each do |scene_data|
-        tbl = scene_data[0]
-        fixtures = YAML.load(scene_data[1])
-        unless fixtures.empty?
-          fixtures.each do |fixture|
-            ActiveRecord::Base.connection.execute "INSERT INTO \#{tbl} (\#{fixture.keys.join(",")}) VALUES (\#{fixture.values.collect { |value| ActiveRecord::Base.connection.quote(value) }.join(",")})"
-          end
-        end
+    File.open(RAILS_ROOT + "/scenes/saved/#{file_name}.rb", "w") do |f|
+      f.write <<DATA
+Scenes::Scene.named("#{name}") {
+  YAML.load_file(RAILS_ROOT + "#{yaml_file}").each do |scene_data|
+    tbl = scene_data[0]
+    fixtures = YAML.load(scene_data[1])
+    unless fixtures.empty?
+      fixtures.each do |fixture|
+        ActiveRecord::Base.connection.execute "INSERT INTO \#{tbl} (\#{fixture.keys.join(",")}) VALUES (\#{fixture.values.collect { |value| ActiveRecord::Base.connection.quote(value) }.join(",")})"
       end
-    }
-DATA
-    scene_file.close
-    puts "Saved"
+    end
   end
-
-  def normalise_scene_file_name(name)
-    name.gsub(/\W/, '_').downcase
+}
+DATA
+    end
+    puts "Saved"
   end
 
   def interesting_tables
