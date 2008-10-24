@@ -48,4 +48,6 @@ h2. TODO:
 
 * Make search results rake scenes display as the initial one does
 
+* Make scene saving check if file already exists
+
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
