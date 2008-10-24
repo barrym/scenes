@@ -20,6 +20,7 @@ task :scenes => :environment do
 
     scenes.sort.each do |num, name|
       puts " %3d - %s" % [num, name]
+      puts if num % 5 == 0
     end
 
     puts "\nThis will REBUILD the database first\n\n"
