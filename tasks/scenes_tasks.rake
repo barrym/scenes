@@ -30,7 +30,7 @@ task :scenes => :environment do
       input = Readline::readline('> ').strip
 
       if scene = scenes[input.to_i]
-        Rake::Task['db:reset'].invoke
+        Rake::Task['db:migrate:reset'].invoke
         Scenes::Scene[scene].play
         break
       elsif %w(0 q).include? input.downcase
