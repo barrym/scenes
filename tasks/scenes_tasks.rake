@@ -39,7 +39,7 @@ task :scenes => :environment do
         matched = scenes.find_all {|opt| (opt[1] =~ /#{input}/i) && input != '' }
         unless matched.empty?
           matched.sort.each do |option|
-            puts "#{option[0]} - #{option[1]}"
+            puts " %3d - %s" % [option[0], option[1]]
           end
         else
           puts "What?"
