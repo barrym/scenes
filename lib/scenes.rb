@@ -11,3 +11,9 @@ module Scenes
   end
 
 end
+
+# shorcuts methods
+def set_scene(name, &block); Scenes::Scene.named(name,&block); end
+def get_scene(name); Scenes::Scene[name]; end 
+def set_character(name, &block); Scenes::Character.named(name,&block); end
+def get_character(name); Scenes::Character[name]; end 
