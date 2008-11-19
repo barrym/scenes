@@ -1,0 +1,15 @@
+* Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
+
+* Add duplicate method
+
+    Character['foo'].duplicate_as("bar").with do |bar|
+      bar.name = "Bob"
+    end
+
+* Possibly add ability to pass options to character 
+
+* Make init.rb create the scenes/ directory ?
+
+* Make search results rake scenes display as the initial one does
+
+* Make scene saving check if file already exists

@@ -1,20 +1,54 @@
 h1. Scenes
 
-Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state.
+Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state. Initially this was developed to allow us to set up complex scenarios for our Cucumber stories.
 
 h2. Usage
 
 h3. Characters
 
+Characters are used to represent objects in the database. 
+
+h4. Setup
+
+Any method of initially creating an object can be used, as long as the created object is returned.
+
 <pre>
 <code>
   Scenes::Character.named("Alice) {
-    User.create(:name => 'Alice')
+    User.create(:name => 'Alice', :age => 21)
   }
 </code>
 </pre>
 
+
+Referencing a character is done as follows
+
+<pre>
+<code>
+  Scenes::Character['Alice']
+</code>
+</pre>
+
+The first time a character is referenced, it is created in the database, all times after that the object is retreived from the database.
+
+h4. Changing default values
+
+You can load in a character and change the default values by passing a block to the .with method
+
+<pre>
+<code>
+  Scenes::Character['Alice'].with do |alice|
+    alice.age = 25
+  end
+</code>
+</pre>
+
+
 h3. Scenes
+
+Scenes are
+
+h4. Setup
 
 <pre>
 <code>
@@ -27,27 +61,6 @@ h3. Scenes
 
 h2. Rake task
 
-
-h2. TODO:
-
-* Remove .play method. Scene['foo'] should auto play, the same as Character['bar'] does.
-
-* Add duplicate method
-
-  <pre>
-  <code>
-    Character['foo'].duplicate_as("bar").with do |bar|
-      bar.name = "Bob"
-    end
-  </code>
-  </pre>
-
-* Possibly add ability to pass options to character 
-
-* Make init.rb create the scenes/ directory ?
-
-* Make search results rake scenes display as the initial one does
-
-* Make scene saving check if file already exists
+h2. Usage with Cucumber
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
