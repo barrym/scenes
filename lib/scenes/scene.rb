@@ -1,8 +1,12 @@
 module Scenes
 
   module SceneMethods
-    def play(clear = true)
-      Character.clear if clear
+    def play( _options = {})
+      options = {
+        :clear => true
+      }.merge(_options)
+
+      Character.clear if options[:clear]
       self.call
       true
     end
