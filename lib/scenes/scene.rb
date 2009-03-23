@@ -1,8 +1,8 @@
 module Scenes
 
   module SceneMethods
-    def play
-      Character.clear
+    def play(clear = true)
+      Character.clear if clear
       self.call
       true
     end
