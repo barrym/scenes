@@ -46,7 +46,7 @@ You can load in a character and change the default values by passing a block to 
 
 h3. Scenes
 
-Scenes are
+Scenes are used to set the system up in a specific state.
 
 h4. Setup
 
@@ -59,8 +59,37 @@ h4. Setup
 </code>
 </pre>
 
-h2. Rake task
+Scenes don't have to only contain characters, anything that can be played back can go in a scene.
+
+h4. Playing
+
+Scenes can be run using the play method.
+
+<pre>
+<code>
+  Scenes::Scene['Alice and Bob'].play
+</code>
+</pre>
+
+This will execute the scene, in this case adding Alice and Bob to the database.
+
+h2. Rake tasks
+
+There are two rake tasks available:
+
+<pre>
+<code>
+  rake scenes
+  rake scenes:save
+</code>
+</pre>
+
+rake scenes will give you a list of the scenes you have set up, choose an entry to load the scene in your development environment - this will delete whatever you currently have in your dev environment.
+
+rake scenes:save will save your current development environment as a scene for you to use. This is quite simplistic, and currently almost certainly won't work with any kind of database constraints you may have, but should work for most cases.
 
 h2. Usage with Cucumber
+
+
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
