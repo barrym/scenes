@@ -1,5 +1,5 @@
-require 'scenes/character'
-require 'scenes/scene'
+require  File.join(File.dirname(__FILE__), 'scenes/character')
+require  File.join(File.dirname(__FILE__), 'scenes/scene')
 
 module Scenes
   
