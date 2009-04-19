@@ -13,3 +13,5 @@
 * Make search results rake scenes display as the initial one does
 
 * Make scene saving check if file already exists
+
+* scenes.yml to allow overriding of default values

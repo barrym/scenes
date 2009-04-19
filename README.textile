@@ -1,6 +1,6 @@
 h1. Scenes
 
-Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state. Initially this was developed to allow us to set up complex scenarios for our Cucumber stories.
+Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state. Initially this was developed to allow us to set up complex scenarios for our Cucumber stories. Currently, this will only work if you are using ActiveRecord in your Rails app.
 
 h2. Usage
 
@@ -43,6 +43,7 @@ You can load in a character and change the default values by passing a block to 
 </code>
 </pre>
 
+This is equivalent to creating a record in the database and then updating it.
 
 h3. Scenes
 
@@ -84,12 +85,35 @@ There are two rake tasks available:
 </code>
 </pre>
 
-rake scenes will give you a list of the scenes you have set up, choose an entry to load the scene in your development environment - this will delete whatever you currently have in your dev environment.
+rake scenes will give you a list of the scenes you have set up, choose an entry to load the scene in your development environment - this will delete whatever you currently have in your dev environment (it will run rake db:migrate:reset)
 
 rake scenes:save will save your current development environment as a scene for you to use. This is quite simplistic, and currently almost certainly won't work with any kind of database constraints you may have, but should work for most cases.
 
 h2. Usage with Cucumber
 
+<pre>
+<code>
+Scenes::load
+Scenes::load("../shared/scenes/my_scenes.rb")
+</code>
+</pre>
 
+<pre>
+<code>
+Scenes::Scene.list.each do |scene_name|
+  Given /^the scene #{scene_name}$/i do
+    Scenes::Scene[scene_name].play
+  end
+end
+</code>
+</pre>
+
+<pre>
+<code>
+Given /^the scene "#(.+)"$/i do |scene_name|
+  Scenes::Scene[scene_name].play
+end
+</code>
+</pre>
 
 Copyright (c) 2008 Barry Mitchelson, released under the MIT license
