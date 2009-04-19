@@ -2,6 +2,16 @@ h1. Scenes
 
 Scenes is a Rails plugin to set up system scenes, mainly for use with "Cucumber":https://github.com/aslakhellesoy/cucumber/tree, but can also be used to set your system into a preset state. Initially this was developed to allow us to set up complex scenarios for our Cucumber stories. Currently, this will only work if you are using ActiveRecord in your Rails app.
 
+h2. Installation
+
+From the root of your Rails app:
+
+<pre>
+<code>
+script/plugin install git://github.com/barrym/scenes.git
+</code>
+</pre>
+
 h2. Usage
 
 h3. Characters
