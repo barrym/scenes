@@ -91,28 +91,41 @@ rake scenes:save will save your current development environment as a scene for y
 
 h2. Usage with Cucumber
 
+In your env.rb file, add the following
+
 <pre>
 <code>
 Scenes::load
+</code>
+</pre>
+
+This will load your scenes from the scenes directory. 
+
+If your scenes are stored in another location, just pass the location to Scenes::load
+
+<pre>
+<code>
 Scenes::load("../shared/scenes/my_scenes.rb")
 </code>
 </pre>
 
-<pre>
-<code>
-Scenes::Scene.list.each do |scene_name|
-  Given /^the scene #{scene_name}$/i do
-    Scenes::Scene[scene_name].play
-  end
-end
-</code>
-</pre>
+To use scenes in a story add this to your env.rb
 
 <pre>
 <code>
 Given /^the scene "#(.+)"$/i do |scene_name|
   Scenes::Scene[scene_name].play
 end
+</code>
+</pre>
+
+which allows you to load scenes in a scenario
+
+<pre>
+<code>
+Given the scene "my great scene"
+And I am logged in as the admin user
+...
 </code>
 </pre>
 
