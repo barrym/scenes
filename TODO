@@ -15,3 +15,7 @@
 * Make scene saving check if file already exists
 
 * scenes.yml to allow overriding of default values
+
+* .find should check ActiveRecord adapter and use relevant finder
+
+* .named should just be used to set a character/scene, not load as well
