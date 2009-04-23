@@ -24,7 +24,7 @@ Any method of initially creating an object can be used, as long as the created o
 
 <pre>
 <code>
-  Scenes::Character.named("Alice) {
+  Scenes::Character.named("Alice") {
     User.create(:name => 'Alice', :age => 21)
   }
 </code>
